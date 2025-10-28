@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="searchForm" class="row">
+      <div class="col">
+        <label for="origin" class="form-label">Origin</label>
+        <select formControlName="origin" class="form-select" id="origin">
+            <option value="DEL">Delhi</option>
+            <option value="BOM">Mumbai</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="destination" class="form-label">Destination</label>
+        <select formControlName="destination" id="destination" class="form-select">
+            <option value="DEL">Delhi</option>
+            <option value="BOM">Mumbai</option>
+        </select>
+    </div>
+    <div class="col">
+        <label for="travelDate" class="form-label">Date</label>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="travelDate"
+          id="travelDate"
+        />
+      </div>
+      <div class="col">
+        <button (click)="onSearch()" class="btn btn-primary mt-4">Search</button>
+      </div>
+    </form>
+  </div>
+</div>

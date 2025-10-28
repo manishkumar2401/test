@@ -1,0 +1,33 @@
+<h2>{{ formTitle }}</h2>
+<p>registeration-form works!</p>
+<input type="text" name="" [(ngModel)]="formTitle" id="" />
+<button (click)="submitForm(formTitle)">Submit</button>
+
+<button [routerLink]="['/list-page']">Go To List Page</button>
+
+<h3>Array & If Condition</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Sr No.</th>
+    </tr>
+    <tr>
+      <th>Course</th>
+    </tr>
+    <tr>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of courseList; let srNo = index">
+      <td>{{ srNo +1 }}</td>
+      <td>{{ item.course }}</td>
+      <td>{{ item.Price }}</td>
+      <td *ngIf="item.status">Completed</td>
+      <td *ngIf="!item.status">Incompleted</td>
+    </tr>
+  </tbody>
+</table>
