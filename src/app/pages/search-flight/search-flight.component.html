@@ -1,2 +1,33 @@
 <app-search-form (getFlightList)="searchFlightList($event)"></app-search-form>
 <div>List Here</div>
+
+<div class="card" *ngIf="datalist">
+  <div class="card-header">
+    {{ datalist.details.flightDetail[0].airline_name }} -
+    {{ datalist.details.flightDetail[0].flight_number }}
+  </div>
+  <div class="card-body row">
+    <div class="col-md-4">
+      <p>
+        {{ datalist.details.flightDetail[0].departureTime }},
+        {{ datalist.details.flightDetail[0].departureDate | date : "mediumDate" }}
+      </p>
+      <p>{{ datalist.details.flightDetail[0].fromCity_name }}</p>
+      <h6>{{ datalist.details.flightDetail[0].fromAirport_name }}</h6>
+    </div>
+    <div class="col-md-4">
+        <h6>{{ datalist.details.flightDetail[0].journeyDuration }}</h6>
+        <p *ngIf="datalist.stops == 0">Non-Stop</p>
+        <p *ngIf="datalist.stops > 0">{{datalist.details.stops}}</p>
+    </div>
+    <div class="col-md-4">
+      <p>
+        {{ datalist.details.flightDetail[0].arrivalTime }},
+        {{ datalist.details.flightDetail[0].arrivalDate | date : "mediumDate" }}
+      </p>
+      <p>{{ datalist.details.flightDetail[0].toCity_name }}</p>
+      <h6>{{ datalist.details.flightDetail[0].toAirport_name }}</h6>
+    </div>
+  </div>
+  <div class="card-footer text-body-secondary">{{ datalist.price.totalAmount }} {{datalist.price.currency}}</div>
+</div>

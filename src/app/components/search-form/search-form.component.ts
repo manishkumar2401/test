@@ -22,14 +22,14 @@ export class SearchFormComponent {
   
   onSearch=()=>{
     this.flightList.getFlightList(this.searchForm.value).subscribe((res:any)=>{
-      this.flightdetail(res)
+      this.getFlightList.emit(res)
     })
   }
   
-  flightdetail(payload:any){
-    this.flightList.getFlightDetails(payload).subscribe((res:any)=>{
-      console.log(res)
-    })
-   }
+  // flightdetail(payload:any){
+  //   this.flightList.getFlightDetails(payload).subscribe((res:any)=>{
+  //     console.log(res)
+  //   })
+  //  }
 
 }
