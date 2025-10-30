@@ -16,12 +16,20 @@ export class SearchFormComponent {
   searchForm: FormGroup = new FormGroup({
     origin: new FormControl('DEL', [Validators.required]),
     destination: new FormControl('BOM', [Validators.required]),
-    travelDate: new FormControl((this.today).toJSON().substring(0,10), [Validators.required]),
+    travelDate: new FormControl("2025-12-12", [Validators.required]),
+    // travelDate: new FormControl((this.today).toJSON().substring(0,10), [Validators.required]),
   });
   
   onSearch=()=>{
     this.flightList.getFlightList(this.searchForm.value).subscribe((res:any)=>{
+      this.flightdetail(res)
+    })
+  }
+  
+  flightdetail(payload:any){
+    this.flightList.getFlightDetails(payload).subscribe((res:any)=>{
       console.log(res)
     })
    }
+
 }
