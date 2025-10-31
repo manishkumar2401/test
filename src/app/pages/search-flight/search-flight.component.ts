@@ -12,14 +12,19 @@ import { CommonModule } from '@angular/common';
 export class SearchFlightComponent {
   datalist: any;
   searchFlightList(flightlist: any) {
-    const flight = {
-      details:
-        flightlist.data.flightSearchRes.tripInfos.recommendation[0]
-          .segmentInformation[0],
-      price:
-        flightlist.data.flightSearchRes.tripInfos.recommendation[0]
-          .totalPriceList[0].fareDetails,
-    };
+    console.log(flightlist);
+    const flight = flightlist
+    .filter((el: any) => el.status === 200)
+      .map((el:any) => {
+        return {
+          details:
+            el.data.flightSearchRes.tripInfos.recommendation[0]
+              .segmentInformation[0],
+          price:
+            el.data.flightSearchRes.tripInfos.recommendation[0]
+              .totalPriceList[0].fareDetails,
+        };
+      });
     console.log(flight);
     this.datalist = flight;
   }
